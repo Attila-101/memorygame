@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>&lt;Memory Game&gt;</h1>
+        </header>
+        <p>match the html elements with the css selectors</p>
+
+        <section class="score-board">
+        	<span class="moves">0</span> move
+            <div class="timer">
+            </div>
+            <div class="replay" onclick=startGame()>
+        		<button class="replay">Restart</button>
+        	</div>
+        </section>
+
+        <ul class="stack" id="card-stack">
+            <li class="card" type="paragraph-tag">
+                <p>p</p>
+            </li>
+            <li class="card" type="paragraph-tag">
+                <p>&lt;p&gt;navbar&lt;p&gt;</p>
+            </li>
+            <li class="card" type="navbar-class">
+                <p>class="navbar"</p>
+            </li>
+            <li class="card " type="navbar-id">
+                <p>id="navbar"</p>
+            </li>
+            <li class="card" type="h1-tag" >
+                <p>&lt;h1&gt;card&lt;h1&gt;</p>
+            </li>
+            <li class="card" type="card-class">
+                <p>class="card"</p>
+            </li>
+            <li class="card" type="navbar-id">
+                <p>#navbar</p>
+            </li>
+            <li class="card" type="card-id">
+                <p>#card</p>
+            </li>
+            <li class="card" type="card-id">
+                <p>id="card"</p>
+            </li>
+            <li class="card" type="h1-tag">
+                <p>h1</p>
+            </li>
+            <li class="card" type="navbar-class">
+                <p>.navbar</p>
+            </li>
+            <li class="card" type="card-class">
+                <p>.card</p>
+            </li>
+        </ul>
+
+        <div id="popup-container" class="overlay">
+            <div class="popup">
+                <a class="close" href=# >x</a>
+                <div class="encouragement">
+                    You got this!
+                </div>
+                <div class="scores">
+                    <p>Your # of moves: <span id=finalMove> </span> </p>
+                    <p>Your time: <span id=totalTime> </span> </p>
+                </div>
+                <button id="play-again"onclick="playAgain()">
+                    Play again!</a>
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>

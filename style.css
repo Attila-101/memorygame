@@ -1,0 +1,275 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@200;300;400;500;600;700&display=swap");
+/*font-family: 'Roboto Mono', monospace;*/
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Roboto Mono", monospace;
+  font-size: 16px;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.stack {
+  width: 60vw;
+  min-height: 50vh;
+  background: #ebebeb;
+  padding: 1rem;
+  margin: 0 0 3em;
+  border-radius: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.stack .card {
+  height: 10rem;
+  width: 10rem;
+  margin: 0.5rem 0.5rem;
+  background: #f06529;
+  font-size: 0;
+  color: #ffffff;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.stack .card.open {
+  transform: rotateY(0);
+  background: #2965f1;
+  cursor: default;
+  animation-name: flipInY;
+  animation-duration: 0.75s;
+}
+
+.stack .card.show {
+  font-size: 1rem;
+}
+
+.stack .card.match {
+  cursor: default;
+  background: #2965f1;
+  font-size: 16px;
+  animation-name: rubberBand;
+  animation-duration: 0.75s;
+}
+
+.stack .card.unmatched {
+  animation-name: pulse;
+  animation-duration: 0.75s;
+  background: #2965f1;
+}
+
+.stack .card.disabled {
+  pointer-events: none;
+  opacity: 0.9;
+}
+
+.score-board {
+  text-align: left;
+  margin-bottom: 10px;
+}
+
+.replay {
+  float: right;
+  cursor: pointer;
+  margin-left: 0.5rem;
+}
+
+.timer {
+  display: inline-block;
+  margin-left: 0.5rem;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  transition: 500ms;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.overlay:target {
+  visibility: visible;
+  opacity: 1;
+}
+
+.popup {
+  margin: 70px auto;
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 5px;
+  width: 25vw;
+  position: relative;
+  transition: all 5s ease-in-out;
+}
+
+.popup h2 {
+  margin-top: 0;
+  color: #333;
+}
+
+.popup .close {
+  position: absolute;
+  top: 0;
+  right: 10px;
+  transition: all 200ms;
+  font-size: 20px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #000000;
+}
+
+.popup .close:hover {
+  color: #f06529;
+}
+
+.encouragement {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.popup .encouragement,
+.scores {
+  max-height: 30%;
+  overflow: auto;
+  text-align: center;
+}
+
+.show {
+  visibility: visible !important;
+  opacity: 100 !important;
+}
+
+#play-again {
+  background-color: #000000;
+  padding: 0.7rem 1rem;
+  font-size: 1.1rem;
+  display: block;
+  margin: 0 auto;
+  width: 50%;
+  color: #ffffff;
+  border-radius: 5px;
+}
+
+#play-again:hover {
+  background-color: #f06529;
+}
+
+@keyframes flipInY {
+  from {
+    transform: perspective(400px) rotate3d(0, 1, 0, 90deg);
+    animation-timing-function: ease-in;
+    opacity: 0;
+  }
+
+  40% {
+    transform: perspective(400px) rotate3d(0, 1, 0, -20deg);
+    animation-timing-function: ease-in;
+  }
+
+  60% {
+    transform: perspective(400px) rotate3d(0, 1, 0, 10deg);
+    opacity: 1;
+  }
+
+  80% {
+    transform: perspective(400px) rotate3d(0, 1, 0, -5deg);
+  }
+
+  to {
+    transform: perspective(400px);
+  }
+}
+
+@keyframes rubberBand {
+  from {
+    transform: scale3d(1, 1, 1);
+  }
+
+  30% {
+    transform: scale3d(1.25, 0.75, 1);
+  }
+
+  40% {
+    transform: scale3d(0.75, 1.25, 1);
+  }
+
+  50% {
+    transform: scale3d(1.15, 0.85, 1);
+  }
+
+  65% {
+    transform: scale3d(0.95, 1.05, 1);
+  }
+
+  75% {
+    transform: scale3d(1.05, 0.95, 1);
+  }
+
+  to {
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+@keyframes pulse {
+  from {
+    transform: scale3d(1, 1, 1);
+  }
+
+  50% {
+    transform: scale3d(1.2, 1.2, 1.2);
+  }
+
+  to {
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+/*UNDER CONSTRUCTION*/
+/*@media (min-width: 1500px) {
+  .container {
+    font-size: 22px;
+  }
+
+  .stack {
+    width: 800px;
+    height: 800px;
+  }
+
+  .stack .card {
+    height: 10rem;
+    width: 10rem;
+  }
+
+  .popup {
+    width: 60%;
+  }
+}
+*/
