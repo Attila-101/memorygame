@@ -1,37 +1,34 @@
-//UNDER CONSTRUCTION
-// put all cards in an array
+// stores all cards in a single variable; cards
 let card = document.getElementsByClassName("card");
 let cards = [...card]
 console.log(cards);
 
-// stack of all cards
-const stack = document.getElementById("card-stack");
-
-// declaring move variable
+// move variable
 let moves = 0;
 let counter = document.querySelector(".moves");
 
-// declaring variable of matchedCards //NOTHING HAPPENED WHEN REMOVED FROM HTML THEREFORE IT MEANS JS LOOKS THROUGH THE CSS ALSO AT THE SAME TIME
+// variable of matchedCards
 let matchedCard = document.getElementsByClassName("match");
 
-// close icon in modal
-let closeicon = document.querySelector(".close");
+// variable for close icon in modal
+let closeIcon = document.querySelector(".close");
 
-// declare modal
+// variable for modal
 let modal = document.getElementById("popup-container")
 
-// array for opened cards
+// array of opened cards
 var openedCards = [];
 
+// shuffles cards
 function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
 
-    // While there remain elements to shuffle...
+    // while there remain elements to shuffle...
     while (currentIndex !== 0) {
-        // Pick a remaining element...
+        // pick a remaining element...
         randomIndex = Math.floor(Math.random() * currentIndex);
         currentIndex -= 1;
-        // And swap it with the current element.
+        // and swap it with the current element.
         temporaryValue = array[currentIndex];
         array[currentIndex] = array[randomIndex];
         array[randomIndex] = temporaryValue;
@@ -41,15 +38,16 @@ function shuffle(array) {
 };
 
 
-// shuffles cards when page is refreshed / loads
+// shuffles cards when page is opened or refreshed
 document.body.onload = startGame();
 
-
-// @description function to start a new play 
+// replay 
 function startGame(){
-    // shuffle cards
-    cards = shuffle(cards);
-    // remove all exisiting classes from each card
+// stack of all cards
+const stack = document.getElementById("card-stack");
+// shuffles cards  
+cards = shuffle(cards);
+    // removes all exisiting classes from each card
     for (var i = 0; i < cards.length; i++){
         stack.innerHTML = "";
         [].forEach.call(cards, function(item) {
@@ -57,10 +55,10 @@ function startGame(){
         });
         cards[i].classList.remove("show", "open", "match", "disabled");
     }
-    // reset moves
+    // resets move counter
     moves = 0;
     counter.innerHTML = moves;
-    //reset timer
+    //resets timer
     second = 0;
     minute = 0; 
     hour = 0;
@@ -70,7 +68,7 @@ function startGame(){
 }
 
 
-// @description toggles open and show class to display cards
+// toggles open and show class to display cards
 var displayCard = function (){
     this.classList.toggle("open");
     this.classList.toggle("show");
@@ -78,7 +76,7 @@ var displayCard = function (){
 };
 
 
-// @description add opened cards to OpenedCards list and check if cards are match or not
+// adds opened cards and checks if cards are matched or not
 function cardOpen() {
     openedCards.push(this);
     var len = openedCards.length;
@@ -93,7 +91,7 @@ function cardOpen() {
 };
 
 
-// @description when cards match
+// executes instructions when cards are matched 
 function matched(){
     openedCards[0].classList.add("match", "disabled");
     openedCards[1].classList.add("match", "disabled");
@@ -103,7 +101,7 @@ function matched(){
 }
 
 
-// description when cards don't match
+// executes these actions when cards are not matched 
 function unmatched(){
     openedCards[0].classList.add("unmatched");
     openedCards[1].classList.add("unmatched");
@@ -117,7 +115,7 @@ function unmatched(){
 }
 
 
-// @description disable cards temporarily
+// disables cards temporarily
 function disable(){
     Array.prototype.filter.call(cards, function(card){
         card.classList.add('disabled');
@@ -125,7 +123,7 @@ function disable(){
 }
 
 
-// @description enable cards and disable matched cards
+// enables cards but disables matched cards
 function enable(){
     Array.prototype.filter.call(cards, function(card){
         card.classList.remove('disabled');
@@ -136,11 +134,11 @@ function enable(){
 }
 
 
-// @description count player's moves
+// counts the number of moves the player makes 
 function moveCounter(){
     moves++;
     counter.innerHTML = moves;
-    //start timer on first click
+    // timer starts on first click
     if(moves == 1){
         second = 0;
         minute = 0; 
@@ -149,7 +147,7 @@ function moveCounter(){
     }
 }
 
-// @description game timer
+// timer
 var second = 0, minute = 0; hour = 0;
 var timer = document.querySelector(".timer");
 var interval;
@@ -169,45 +167,45 @@ function startTimer(){
 }
 
 
-// @description congratulations when all cards match, show modal and moves, time and rating
-function congratulations(){
+// when all cards are matched a modal shows the number of moves the player made and the time it took the player to match all cards 
+function scoreBoardModal(){
     if (matchedCard.length == 12){
         clearInterval(interval);
         finalTime = timer.innerHTML;
 
-        // show congratulations modal
+        // shows modal
         modal.classList.add("show");
 
-        //showing move, rating, time on modal
+        //shows number of moves and the time it took
         document.getElementById("finalMove").innerHTML = moves;
         document.getElementById("totalTime").innerHTML = finalTime;
 
-        //closeicon on modal
+        //closes the modal
         closeModal();
     };
 }
 
 
-// @description close icon on modal
+// onclick close icon closes modal and restarts the game
 function closeModal(){
-    closeicon.addEventListener("click", function(e){
+    closeIcon.addEventListener("click", function(e){
         modal.classList.remove("show");
         startGame();
     });
 }
 
 
-// @desciption for user to play Again 
-function playAgain(){
+// replay button closes modal and restarts the game
+function replay(){
     modal.classList.remove("show");
     startGame();
 }
 
 
-// loop to add event listeners to each card
+// loops through all cards to add event listeners to each card
 for (var i = 0; i < cards.length; i++){
     card = cards[i];
     card.addEventListener("click", displayCard);
     card.addEventListener("click", cardOpen);
-    card.addEventListener("click",congratulations);
+    card.addEventListener("click",scoreBoardModal);
 };

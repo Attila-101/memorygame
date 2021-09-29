@@ -19,7 +19,7 @@ body {
 
 body {
   font-family: "Roboto Mono", monospace;
-  font-size: 16px;
+  font-size: 1rem;
 }
 
 .container {
@@ -71,7 +71,7 @@ body {
 .stack .card.match {
   cursor: default;
   background: #2965f1;
-  font-size: 16px;
+  font-size: 1rem;
   animation-name: rubberBand;
   animation-duration: 0.75s;
 }
@@ -132,7 +132,7 @@ body {
 
 .popup h2 {
   margin-top: 0;
-  color: #333;
+  /*color: #333;*/
 }
 
 .popup .close {
@@ -143,7 +143,7 @@ body {
   font-size: 20px;
   font-weight: bold;
   text-decoration: none;
-  color: #000000;
+  color: #264de4;
 }
 
 .popup .close:hover {
@@ -168,7 +168,7 @@ body {
 }
 
 #play-again {
-  background-color: #000000;
+  background-color: #264de4;
   padding: 0.7rem 1rem;
   font-size: 1.1rem;
   display: block;
@@ -253,23 +253,184 @@ body {
 }
 
 /*UNDER CONSTRUCTION*/
-/*@media (min-width: 1500px) {
-  .container {
-    font-size: 22px;
+@media only screen and (min-width: 1936px) and (max-width: 10000px) {
+  .stack {
+    width: 1000px;
+    min-height: 1000px;
   }
 
+  .stack .card {
+    height: 220px;
+    width: 220px;
+  }
+}
+
+@media only screen and (min-width: 1824px) and (max-width: 1935px) {
   .stack {
-    width: 800px;
-    height: 800px;
+    width: 50vw;
+  }
+
+  .stack .card {
+    height: 10.7rem;
+    width: 10.7rem;
+  }
+}
+
+@media only screen and (min-width: 1520px) and (max-width: 1823px) {
+  .stack {
+    width: 50vw;
   }
 
   .stack .card {
     height: 10rem;
     width: 10rem;
   }
+}
 
-  .popup {
-    width: 60%;
+@media only screen and (min-width: 994px) and (max-width: 1226px) {
+  .stack {
+    width: 67vw;
+  }
+
+  .stack .card {
+    height: 8.9rem;
+    width: 8.9rem;
   }
 }
-*/
+
+@media only screen and (min-width: 811px) and (max-width: 993px) {
+  .stack {
+    width: 75vw;
+  }
+
+  .stack .card {
+    height: 8rem;
+    width: 8rem;
+  }
+
+  .stack .card.show {
+    font-size: 0.8rem;
+  }
+
+  .stack .card.match {
+    font-size: 0.8rem;
+  }
+}
+
+@media only screen and (min-width: 680px) and (max-width: 810px) {
+  .stack {
+    width: 80vw;
+  }
+
+  .stack .card {
+    height: 7rem;
+    width: 7rem;
+  }
+
+  .stack .card.show {
+    font-size: 0.7rem;
+  }
+
+  .stack .card.match {
+    font-size: 0.7rem;
+  }
+
+  .popup {
+    width: 45vw;
+  }
+}
+
+@media only screen and (min-width: 554px) and (max-width: 679px) {
+  .stack {
+    width: 81vw;
+  }
+
+  .stack .card {
+    height: 5.5rem;
+    width: 5.5rem;
+  }
+
+  .stack .card.show {
+    font-size: 0.57rem;
+  }
+
+  .stack .card.match {
+    font-size: 0.57rem;
+  }
+
+  .popup {
+    width: 47vw;
+  }
+}
+
+@media only screen and (min-width: 463px) and (max-width: 553px) {
+  .container {
+    font-size: 0.8rem;
+  }
+
+  .replay {
+    font-size: 0.55rem;
+  }
+
+  .stack {
+    width: 90vw;
+  }
+
+  .stack .card {
+    height: 5rem;
+    width: 5rem;
+  }
+
+  .stack .card.show {
+    font-size: 0.55rem;
+  }
+
+  .stack .card.match {
+    font-size: 0.55rem;
+  }
+
+  .popup {
+    width: 50vw;
+  }
+
+  #play-again {
+    font-size: 0.8rem;
+    width: 55%;
+  }
+}
+
+@media only screen and (min-width: 300px) and (max-width: 462px) {
+  .container {
+    font-size: 0.7rem;
+  }
+
+  .replay {
+    font-size: 0.55rem;
+  }
+
+  .stack {
+    width: 100vw;
+  }
+
+  .stack .card {
+    height: 5rem;
+    width: 5rem;
+  }
+
+  .stack .card.show {
+    font-size: 0.55rem;
+  }
+
+  .stack .card.match {
+    font-size: 0.55rem;
+  }
+
+  .popup {
+    width: 65vw;
+  }
+
+  #play-again {
+    font-size: 0.8rem;
+    width: 57%;
+  }
+}
